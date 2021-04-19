@@ -36,6 +36,17 @@ def linear_search(sequence,number):
     return {"positions": indicie, "count": count}
 
 
+def pattern_search(sequence,pattern):
+    pos = set()
+    idx = 0
+    while idx < len(sequence) - len(pattern):
+        substring = sequence[idx:idx + len(pattern)]
+
+        if substring == pattern:
+            pos.add(idx)
+        idx = idx + 1
+    return pos
+
 
 
 
@@ -43,6 +54,10 @@ def linear_search(sequence,number):
 def main():
     sequential_data =read_data("sequential.json", "unordered_numbers")
     results = linear_search(sequential_data, 0)
+    print(results)
+
+    sequential_data =read_data("sequential.json", "dna_sequence")
+    results = pattern_search(sequential_data, 0)
     print(results)
 
 
